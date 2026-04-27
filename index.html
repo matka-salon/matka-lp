@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matka — 180分の素肌リトリート</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --linen: #F2EDE4;
+    --parchment: #E8E0D0;
+    --stone: #C0B09A;
+    --stone-dark: #8A7A66;
+    --charcoal: #2E2820;
+    --muted: #6A5E52;
+    --sage: #7A8C72;
+    --sage-light: #C8D4C0;
+    --warm-gold: #A08060;
+    --text-light: #9C8E82;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-img-col {
+    position: relative;
+    background: var(--linen);
+    overflow: hidden;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(0.08) brightness(0.98) saturate(0.9);
+    display: block;
+  }
+
+  .hero-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 3.5rem;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .hero-text-col::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10%; bottom: 10%;
+    width: 1px;
+    background: var(--parchment);
+  }
+
+  .badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 6vw, 5rem);
+    letter-spacing: 0.35em;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.92rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    line-height: 2.2;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--sage-light);
+    padding-left: 1.2rem;
+  }
+
+  .btn-reserve {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: background 0.3s;
+    align-self: flex-start;
+  }
+  .btn-reserve:hover { background: var(--stone-dark); }
+
+  .hero-note {
+    margin-top: 1.2rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== COMMON ===== */
+  .section-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(4rem, 7vw, 6.5rem) clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .full-bleed { background: var(--linen); }
+
+  .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    color: var(--sage);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    color: var(--charcoal);
+  }
+
+  .body-text {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 2.2;
+    letter-spacing: 0.06em;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .ornament-line { width: 40px; height: 1px; background: var(--stone); opacity: 0.5; }
+  .ornament-dia { width: 6px; height: 6px; transform: rotate(45deg); background: var(--warm-gold); opacity: 0.7; }
+
+  /* ===== CONCEPT ===== */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .concept-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: sepia(0.08) brightness(0.97) saturate(0.9);
+  }
+
+  .pillars { margin-top: 2rem; }
+
+  .pillar {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .pillar:first-child { border-top: 1px solid var(--parchment); }
+
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    padding-top: 0.1rem;
+  }
+
+  .pillar strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .pillar span {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* ===== FOR WHO ===== */
+  .forwho-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .forwho-item {
+    background: var(--cream);
+    border: 1px solid var(--parchment);
+    padding: 1.4rem 1.5rem 1.4rem 2.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .forwho-item::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 1.85rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.6;
+  }
+
+  /* ===== MENU ===== */
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .price-block { text-align: right; }
+
+  .price-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
+    display: block;
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  .timeline {
+    border-left: 1px solid var(--parchment);
+    padding-left: 2rem;
+    margin-left: 0.3rem;
+  }
+
+  .tl-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2.38rem;
+    top: 0.45rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.7;
+  }
+
+  .tl-step {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  .tl-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-body {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+
+  .menu-asterisk {
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    line-height: 2;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--parchment);
+  }
+
+  /* ===== CTA ===== */
+  .cta-wrap {
+    text-align: center;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .cta-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.08em;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-body {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 2.2;
+    letter-spacing: 0.07em;
+    margin-bottom: 3rem;
+  }
+
+  .btn-large {
+    display: inline-block;
+    padding: 1.1rem 4rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: background 0.3s;
+    margin-bottom: 1.2rem;
+  }
+  .btn-large:hover { background: var(--stone-dark); }
+
+  .cta-access {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    letter-spacing: 0.12em;
+    line-height: 2.2;
+  }
+
+  footer {
+    background: var(--charcoal);
+    color: var(--stone);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+  }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-img-col { height: 70vw; }
+    .hero-text-col { padding: 2.5rem 1.5rem; }
+    .hero-text-col::before { display: none; }
+    .concept-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .concept-img { aspect-ratio: 4/3; }
+    .forwho-list { grid-template-columns: 1fr; }
+    .menu-header { flex-direction: column; align-items: flex-start; }
+    .price-block { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<!-- 写真差し替え：hero-imgのsrcを自分の写真ファイル名に変更してください -->
+<!-- 例：src="hero.jpg"  （同じフォルダに入れてください） -->
+<div class="hero">
+  <div class="hero-img-col">
+    <img src="hero.jpg" alt="matkaサロン" class="hero-img" />
+  </div>
+  <div class="hero-text-col">
+    <span class="badge">renewal — 2025</span>
+    <div class="hero-logo">matka</div>
+    <p class="hero-tagline">
+      ファンデーションに頼らない、<br>
+      一生モノの素肌を育てる<br>
+      伴走型リトリート
+    </p>
+    <a href="https://reserva.be/mdk884" class="btn-reserve">ご予約はこちら</a>
+    <p class="hero-note">天王寺 ｜ プライベートサロン ｜ 完全予約制</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section-wrap">
+  <div class="ornament"><div class="ornament-line"></div><div class="ornament-dia"></div><div class="ornament-line"></div></div>
+  <span class="label">About this renewal</span>
+  <h2>matkaが、生まれ変わりました。</h2>
+  <p class="body-text">
+    これまで大切にしてきた「肌の土台を整える」という想いはそのままに、<br>
+    matkaは新しいコンセプトとメニューで再出発します。<br><br>
+    「その場しのぎの消費」から、「5年後・10年後の自分への投資」へ。<br>
+    ここは、お客様の素肌への旅に、三人四脚で伴走する場所です。
+  </p>
+</div>
+
+<!-- CONCEPT -->
+<div class="full-bleed">
+  <div class="section-wrap">
+    <span class="label">New concept</span>
+    <h2>三人四脚の、伴走型リトリート</h2>
+    <div class="concept-grid">
+      <!-- 写真差し替え：concept.jpg を同じフォルダに入れてください -->
+      <img src="concept.jpg" alt="matkaサロン内観" class="concept-img" />
+      <div>
+        <p class="body-text" style="margin-bottom:0.5rem;">
+          肌の改善は、サロンの時間だけでは完成しません。<br>
+          日常に持ち帰れる「整え方」を一緒に育てること——<br>
+          それがmatkaの伴走です。
+        </p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <div>
+              <strong>サロンケア</strong>
+              <span>バザルト®ストーンとオーダーメイドフェイシャルで、身体の深部から整える。</span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <div>
+              <strong>ホームケア</strong>
+              <span>正しいセルフケアの習慣を丁寧にお伝えします。日常の積み重ねが、肌貯金に。</span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <div>
+              <strong>インナーケア</strong>
+              <span>身体の内側から整えるために、お一人おひとりに合ったサプリメントをご提案します。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHO -->
+<div class="section-wrap">
+  <span class="label">This salon is for</span>
+  <h2>こんな方へ</h2>
+  <div class="forwho-list">
+    <div class="forwho-item">長年「肌トラブルさえなければ」と思ってきた方</div>
+    <div class="forwho-item">クリニック系ではなく、自然な美しさを求めている方</div>
+    <div class="forwho-item">忙しいけれど、本気で肌と向き合いたい方</div>
+    <div class="forwho-item">40代・50代、これからの素肌に自信を持ちたい方</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<div class="full-bleed">
+  <div class="section-wrap">
+    <span class="label">New menu — 新規のお客様限定</span>
+    <div class="menu-header">
+      <h2 style="margin-bottom:0;">matka 180分の素肌リトリート</h2>
+      <div class="price-block">
+        <span class="price-num">¥19,800</span>
+        <span class="price-note">税込 ｜ 所要時間 約180分</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-step">step 01 · 約30分</div>
+        <div class="tl-title">カウンセリング</div>
+        <div class="tl-body">
+          お肌・お身体・生活習慣まで丁寧にヒアリング。<br>
+          海洋深層水とピーチ味の美容ドリンクをご用意。<br>
+          意識から、整えていきます。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">step 02 · 約20分</div>
+        <div class="tl-title">洗顔レッスン</div>
+        <div class="tl-body">
+          正しい洗顔は、肌改善のいちばん最初の一歩。<br>
+          実践しながら、丁寧にお伝えします。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">step 03 · 約100分</div>
+        <div class="tl-title">matka シグネチャーコース</div>
+        <div class="tl-body">
+          足浴 10分 ＋ 背面バザルトトリートメント 20分<br>
+          ＋ フェイシャル＆デコルテ 70分<br><br>
+          温熱バザルト®ストーンで巡りを整え、<br>
+          フェイシャルはお肌状態に合わせてオーダーメイド。<br>
+          やさしく、でも確実に"土台"を整えていきます。
+        </div>
+      </div>
+      <div class="tl-item" style="padding-bottom:0">
+        <div class="tl-step">step 04 · 約30分</div>
+        <div class="tl-title">matka tea salon</div>
+        <div class="tl-body">
+          アフタードリンクと季節のお茶菓子とともに、<br>
+          今日のお肌の状態や原因をわかりやすくご説明。<br>
+          ホームケア・ワンポイントメイクアドバイスも。
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-asterisk">
+      ※本メニューは新規のお客様向けのご案内です。<br>
+      リピーターの方は、ご予約サイトよりご確認ください。
+    </p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="ornament" style="justify-content:center;margin-bottom:2rem;">
+    <div class="ornament-line"></div><div class="ornament-dia"></div><div class="ornament-line"></div>
+  </div>
+  <p class="cta-quote">
+    施術が終わってからが、<br>
+    あなたの新しい毎日の始まりです。
+  </p>
+  <p class="cta-body">
+    整う・戻る・満ちる。<br>
+    matkaで、素肌への旅を始めませんか。
+  </p>
+  <div>
+    <a href="https://reserva.be/mdk884" class="btn-large">ご予約・詳細はこちら</a>
+  </div>
+  <p class="cta-access">
+    大阪市 天王寺区 ｜ 完全予約制プライベートサロン<br>
+    詳しいアクセスは予約確定後にお伝えします
+  </p>
+</div>
+
+<footer>
+  &copy; matka — Osaka Private Salon
+</footer>
+
+</body>
+</html>
